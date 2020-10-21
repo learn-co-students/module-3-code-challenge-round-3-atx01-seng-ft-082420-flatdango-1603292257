@@ -21,7 +21,7 @@ function renderFilm(film) {
     let capacity = film.capacity
     let sold = film.tickets_sold
     remainingTics.innerText = (capacity - sold)
-    if (remainingTics.innerText == 0) {
+    if (remainingTics.innerText === 0) {
         buy.remove()
     }
     
