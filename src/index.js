@@ -17,9 +17,14 @@ function renderFilm(film) {
     const showtime = document.querySelector('#showtime')
     const buy = document.querySelector('.ui.orange.button')
     let remainingTics = document.querySelector('#ticket-num')
+
     let capacity = film.capacity
     let sold = film.tickets_sold
     remainingTics.innerText = (capacity - sold)
+    if (remainingTics.innerText == 0) {
+        buy.innerText = 'SOLD OUT'
+        buy.remove()
+    }
     
     
     poster.src = film.poster
@@ -34,14 +39,6 @@ function renderFilm(film) {
         e.preventDefault()
         let soldTickets = sold++
         let decreaseTics = parseInt(remainingTics.innerText) - 1
-        
-        // let remainingTics
-        // if (film.capacity > film.tickets_sold) {
-        //     let sold = film.sold ++
-        // } else if (remainingTics === 0) {
-        //     buy.innerText = 'SOLD OUT'
-        //     return 'cannot purchase at this time'
-        // }
         
 
         fetch(filmUrl, {
